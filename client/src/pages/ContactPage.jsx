@@ -2,12 +2,13 @@ import Header from "../components/Header";
 import { FaRegMap, FaPhoneAlt, FaClock } from "react-icons/fa";
 import { FiMail } from "react-icons/fi";
 import ContactForm from "../components/ContactForm";
+import background from "../Images/nike-background.jpg"
 
 const ContactPage = () => {
   const combinedText = {
     text1: "#lets's_talk",
     text2: "Leave A Message, We love to hear from you!",
-    url: "https://nike0197.netlify.app/assets/1-f4da6767.jpg",
+    url: background,
   };
   return (
     <>
