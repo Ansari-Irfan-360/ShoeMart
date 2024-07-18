@@ -26,19 +26,21 @@ const ProductForm = ({
       formData.append("size", "auto");
       formData.append("image_file", file);
       try {
-        const response = await axios({
-          method: "post",
-          url: "https://api.remove.bg/v1.0/removebg",
-          data: formData,
-          responseType: "arraybuffer",
-          headers: {
-            "X-Api-Key": `${import.meta.env.VITE_REACT_APP_REMOVEBG_KEY}`,
-          },
-        });
-
-        if (response.status !== 200) {
+        var response = file;
+        try {
+          response = await axios({
+            method: "post",
+            url: "https://api.remove.bg/v1.0/removebg",
+            data: formData,
+            responseType: "arraybuffer",
+            headers: {
+              "X-Api-Key": `${import.meta.env.VITE_REACT_APP_REMOVEBG_KEY}`,
+            },
+          });
+        } catch (error) {
+          console.log(error);
           toast.error("Error removing background");
-          return;
+          response.data = file;
         }
         console.log(response);
         // Create a Blob from the response data
