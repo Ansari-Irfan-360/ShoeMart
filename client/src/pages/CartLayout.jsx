@@ -68,7 +68,7 @@ const CartLayout = () => {
   const applyCoupon = (coupon) => {
     if (!data || data.length <= 0) return toast.error("Cart is empty.");
     console.log(coupon.toUpperCase());
-    const listOfCoupons = ["SUMILSUTHAR197", "NIKE2024"];
+    const listOfCoupons = ["IRFAN40","IRFAN50"];
     if (listOfCoupons.includes(coupon.toUpperCase())) {
       setCouponCode(coupon);
       setAppliedCoupon(true);
