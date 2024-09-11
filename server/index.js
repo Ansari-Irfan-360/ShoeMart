@@ -4,6 +4,8 @@ const app = express();
 const cors = require("cors");
 const connectDatabase = require("./db/connect");
 const errorHandlerMiddleware = require("./middleware/error");
+const { serverCheck } = require('poll-server-check');
+
 
 app.use(cors());
 app.use(express.static("./public"));
@@ -36,6 +38,8 @@ app.get("*", (req, res) => {
   //   res.sendFile(path.resolve(__dirname, "../frontend/build/index.html"));
   res.json("404 Not Found");
 });
+
+serverCheck(app);
 
 // Middleware for Errors
 app.use(errorHandlerMiddleware);

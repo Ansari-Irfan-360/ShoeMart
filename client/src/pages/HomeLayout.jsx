@@ -4,12 +4,18 @@ import Footer from "../components/Footer";
 import { createContext, useEffect, useState } from "react";
 import TriangleLoader from "../components/TriangleLoader";
 import Axios from "../Axios";
+import { clientCheck } from 'poll-server-check';
 
 export const LoadingContext = createContext();
 
 const HomeLayout = () => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState({});
+
+  useEffect(()=>{
+    clientCheck(import.meta.env.VITE_BACKEND_URL);
+  },[]);
+  
   useEffect(() => {
     const fetchData = async () => {
       try {
